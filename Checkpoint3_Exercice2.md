@@ -1,13 +1,22 @@
+## Partie 1 : Gestion des utilisateurs  
+
+
 **Q.2.1.1**  
 J'utilise la commande ``adduser maggio``, donne un mot de passe et les informations optionnelles. Pusi je vérifie avec ``cat /etc/passwd`` : **maggio** est bien crée.  
 ![exo2-2](./ressources/exo2-2.jpg)  
   
 **Q2.1.2**  
 Je placerais cet utilisateur dans le groupe des sudoers (root) pour pouvoir au besoin administrer et configurer des fichiers lorsque cela sera nécessaire, par exemple *ssh* (il faudra alors le rentrer dans les *AllowUsers* du fichier /etc/ssh/sshd_config).
+
+## Partie 2 : Configuration de SSH  
   
 **Q2.2.1-2-3**  
 ![exo2-3](./ressources/exo2-3.jpg)  
-Puis Ctrl+O, Yes, Ctrl+X (écrtiture puis sauvegarde du fichier) et on redémarre le service avec ``systemctl restart ssh``.
+Puis Ctrl+O, Yes, Ctrl+X (écrtiture puis sauvegarde du fichier) et on redémarre le service avec ``systemctl restart ssh``.  
+
+## Partie 3 : Analyse du stockage  
+
+
   
   
 **Q2.3.1**  
@@ -63,12 +72,20 @@ Nous vérifions avec la commande ``vgs``: il reste ~1.79Go.
 
 ![exo2-13](./ressources/exo2-13.jpg)  
 
+## Partie 4 : Sauvegardes  
+
+
 
   
 **Q2.4.1**  
 **bareos-dir** : *director* il s'agit du serveur Bareos qui va diriger les opérations de sauvegarde, d'archivage et de restauration.
 **bareos-sd** : *storage-daemon* c'est le serveur de base de données qui gère la lecture et l'écriture des sauvegardes. Il est responsable du stockage des données.
-**bareos-fd** : *file daemon* ou client, il est donc installé sur les machines dont les données vont être sauvegardées. C'est lui qui "envoit" les fichiers au *sd*.
+**bareos-fd** : *file daemon* ou client, il est donc installé sur les machines dont les données vont être sauvegardées. C'est lui qui "envoit" les fichiers au *sd*.  
+
+
+## Partie 5 : Filtrage et analyse réseau  
+
+
   
 **Q2.5.1**  
 On applique la commande **nftables** suivante : ``nft list ruleset``  
@@ -99,6 +116,11 @@ Il faut intégrer ces règles à la chaîne déjà existante et donc faire atten
 
 
 ![exo2-15](./ressources/exo2-15.jpg)  
+
+
+## Partie 6 : Analyse de logs  
+
+
   
 **Q2.6.1**  
 Nous utilisons la commande ``last`` avec l'option ``-n 10``pour afficher uniquement les 10 dernières :  
